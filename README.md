@@ -53,15 +53,15 @@
 
 ## addresses
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| post_code  | string     | null: false                    |
-| prefecture | integer    | null: false                    |
-| city       | string     | null: false                    |
-| street     | string     | null: false                    |
-| building   | string     |                                |
-| tel_number | string     | null: false                    |
-| order      | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| street        | string     | null: false                    |
+| building      | string     |                                |
+| tel_number    | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
