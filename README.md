@@ -3,8 +3,8 @@
 | Column             | Type   | Options                   |
 | ------------------ | ----   | --------------------------|
 | nickname           | string | null: false               |
-| email              | string | null: false               |
-| encrypted_password | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
 | first_name         | string | null: false               |
 | family_name_kana   | string | null: false               |
@@ -24,7 +24,7 @@
 | name             | string     | null: false                    |
 | detail           | text       | null: false                    |
 | category_id      | integer    | null: false                    |
-| states_id        | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
 | delivery_cost_id | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | delivery_day_id  | integer    | null: false                    |
@@ -56,6 +56,7 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | post_code  | string     | null: false                    |
+| prefecture | integer    | null: false                    |
 | city       | string     | null: false                    |
 | street     | string     | null: false                    |
 | building   | string     |                                |
