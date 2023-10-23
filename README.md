@@ -1,10 +1,15 @@
 ## users
 
-| Column   | Type   | Options     |
-| -------- | ----   | ------------|
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ----   | --------------------------|
+| nickname           | string | null: false               |
+| email              | string | null: false               |
+| encrypted_password | string | null: false, unique: true |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| family_name_kana   | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 - has_many :items
@@ -14,13 +19,17 @@
 
 ## items
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| name     | string     | null: false                    |
-| detail   | text       | null: false                    |
-| image    | string     | null: false                    |
-| category | string     | null: false                    |
-| user     | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| detail           | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| states_id        | integer    | null: false                    |
+| delivery_cost_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| delivery_day_id  | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -37,7 +46,8 @@
 
 ### Association
 - belongs_to :user
-- has_one :item
+- belongs_to :item
+- has_one :address
 
 
 
@@ -45,12 +55,11 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| post_code  | integer    | null: false                    |
+| post_code  | string     | null: false                    |
 | city       | string     | null: false                    |
 | street     | string     | null: false                    |
 | building   | string     |                                |
-| tel_number | integer    | null: false                    |
+| tel_number | string     | null: false                    |
 | order      | references | null: false, foreign_key: true |
 
 ### Association
