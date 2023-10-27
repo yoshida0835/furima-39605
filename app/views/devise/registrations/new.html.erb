@@ -1,6 +1,7 @@
 <%= render "shared/second-header"%>
 
 <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
+ 
 <%= form_with model: @user, url: user_registration_path, class: 'user_registration_path', local: true do |f| %>
 <%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <div class='form-wrap'>
@@ -11,7 +12,7 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <% render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
   <%= devise_error_messages! %>
 
@@ -79,7 +80,7 @@
     </div>
     <div class='input-birth-wrap'>
       <%= raw sprintf(
-                  f.date_select(
+                 f.date_select(
                     :birthday,
                     class:'select-birth',
                     id:"birth-date",
