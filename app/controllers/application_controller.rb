@@ -2,11 +2,9 @@ class ApplicationController < ActionController::Base
 
   before_action :basic_auth
 
-  # ログインしてなければサインイン画面へとばす
-
-  # 初期登録外のカラムに値を保存
+ 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # ログアウト後に遷移するpathを設定
+
   def after_sign_out_path_for(resource)
     root_path
   end
