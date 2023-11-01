@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    image            {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg')) }
+    image            { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg')) }
     name             { Faker::Name.initials(number: 4) }
     detail           { Faker::Lorem.sentence }
     category_id      { Faker::Number.between(from: 2, to: 11) }
