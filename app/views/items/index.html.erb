@@ -134,7 +134,6 @@
         <%= link_to "#" do %>   
         <div class='item-img-content'>
           <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
-
           <%# 商品が売れていればsold outを表示しましょう %>
           <%# if  %>
           <%# div class='sold-out'>
@@ -142,7 +141,6 @@
           <%# /div>
           <%# end %>
           <%# //商品が売れていればsold outを表示しましょう %>
-
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
