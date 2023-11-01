@@ -45,8 +45,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
 
+      it 'category_id が1では出品できない' do
+        @item.category_id  = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category can't be blank"
+      end
+
       it 'status_idが空では出品できない' do
         @item.status_id  = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Status can't be blank"
+      end
+
+      it 'status_idが1では出品できない' do
+        @item.status_id  = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include "Status can't be blank"
       end
@@ -57,14 +69,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Delivery cost can't be blank"
       end
 
+      it 'delivery_cost_idが1では出品できない' do
+        @item.delivery_cost_id  = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Delivery cost can't be blank"
+      end
+
       it 'prefecture_idが空では出品できない' do
         @item.prefecture_id  = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
-      
+
+      it 'prefecture_idが1では出品できない' do
+        @item.prefecture_id  = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Prefecture can't be blank"
+      end
+            
       it 'delivery_day_idが空では出品できない' do
         @item.delivery_day_id  = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Delivery day can't be blank"
+      end
+           
+      it 'delivery_day_idが1では出品できない' do
+        @item.delivery_day_id  = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include "Delivery day can't be blank"
       end
