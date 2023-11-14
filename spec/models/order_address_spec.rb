@@ -70,7 +70,19 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Tel number can't be blank")
       end
 
-      it 'tel_numberは10桁以上11桁以内の半角数値でないと保存できないこと' do
+      it 'tel_numberは9桁以下では保存できないこと' do
+        @order_address.tel_number = '090123456'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Tel number is invalid. Use only digits without hyphen')
+      end
+
+      it 'tel_numberは12桁以では保存できないこと' do
+        @order_address.tel_number = '090123456789'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Tel number is invalid. Use only digits without hyphen')
+      end
+
+      it 'tel_numberは半角数値以外が含まれると保存できないこと' do
         @order_address.tel_number = '090-1234-5678'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Tel number is invalid. Use only digits without hyphen')
