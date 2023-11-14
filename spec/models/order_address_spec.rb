@@ -25,10 +25,10 @@ RSpec.describe OrderAddress, type: :model do
 
     context '購入情報が保存できないとき' do
 
-      it "tokenがなければ保存できないこと" do
+      it 'tokenがなければ保存できないこと' do
         @order_address.token = nil
         @order_address.valid?
-        expect(order_addoress.errors.full_message).to include("Token can't be blank")
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
 
       it 'post_codeが空だと保存できないこと' do
