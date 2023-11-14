@@ -11,7 +11,6 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '購入情報が保存できるとき' do
-
       it '項目が全て正しく入力されている' do
         expect(@order_address).to be_valid
       end
@@ -22,9 +21,7 @@ RSpec.describe OrderAddress, type: :model do
       end
     end
 
-
     context '購入情報が保存できないとき' do
-
       it 'tokenがなければ保存できないこと' do
         @order_address.token = nil
         @order_address.valid?
@@ -42,7 +39,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
-      
+
       it 'prefecture_idが空だと保存できないこと' do
         @order_address.prefecture_id = ''
         @order_address.valid?
@@ -54,13 +51,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
-      
+
       it 'cityが空だと保存できないこと' do
         @order_address.city = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
-      
+
       it 'streetが空だと保存できないこと' do
         @order_address.street = ''
         @order_address.valid?
@@ -76,7 +73,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'tel_numberは10桁以上11桁以内の半角数値でないと保存できないこと' do
         @order_address.tel_number = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel number is invalid. Use only digits without hyphen")
+        expect(@order_address.errors.full_messages).to include('Tel number is invalid. Use only digits without hyphen')
       end
 
       it 'userが紐付いていないと保存できないこと' do
