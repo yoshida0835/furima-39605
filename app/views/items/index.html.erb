@@ -151,7 +151,7 @@
               <% else %>
                 <%= image_tag "heart-black.png", class: "heart-icon", width: "10", height: "10" %>
               <% end %>
-              <span class='heart-count'>0</span>
+              <span class='heart-count'><%= item.likes.count %></span>
             </div>
           </div>
         </div>
