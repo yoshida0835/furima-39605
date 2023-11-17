@@ -65,3 +65,29 @@
 
 ### Association
 - belongs_to :order
+
+
+
+## likes
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+
+## relationships
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| following | references | null: false, foreign_key: true |
+| follower  | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :following, class_name: "User"
+- belongs_to :follower,  class_name: "User"
