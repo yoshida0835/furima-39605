@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :users do
     resource :relationships, only: [:create, :destroy]
   end
-    resources :items do
+  resources :items do
     resources :orders, only: [:index, :create]
     resource  :likes,  only: [:create, :destroy]
   end
-
+  resources :users, only: [:show]
 end
