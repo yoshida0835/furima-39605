@@ -19,4 +19,8 @@ class Item < ApplicationRecord
 
   validates :category_id, :status_id, :delivery_cost_id, :prefecture_id, :delivery_day_id,
             numericality: { other_than: 1, message: "can't be blank" }
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
