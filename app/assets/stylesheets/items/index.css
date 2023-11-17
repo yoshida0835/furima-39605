@@ -293,18 +293,18 @@ a {
 }
 
 
-.star-btn {
+.heart-btn {
   display: flex;
   align-items: center;
 }
 
-.star-icon {
+.heart-icon {
   height: 2vh;
   width: 2vh;
   margin-right: 0.5vw;
 }
 
-.star-count {
+.heart-count {
   font-size: 2vh;
 }
 

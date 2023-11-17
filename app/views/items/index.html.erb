@@ -130,7 +130,7 @@
       <% if @items.present? %>
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to item_path(item.id) do %>   
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
           <% if item.order.present? %>
@@ -145,9 +145,13 @@
           </h3>
           <div class='item-price'>
             <span><%= item.price %>円<br><%= item.delivery_cost.name %></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+            <div id="like-btn", class='heart-btn'>
+              <% if user_signed_in? && item.liked_by?(current_user)%>
+                <%= image_tag "heart-pink.png", class: "heart-icon", width: "10", height: "10" %>
+              <% else %>
+                <%= image_tag "heart-black.png", class: "heart-icon", width: "10", height: "10" %>
+              <% end %>
+              <span class='heart-count'><%= item.likes.count %></span>
             </div>
           </div>
         </div>
