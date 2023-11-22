@@ -41,6 +41,13 @@
         <tr>
           <th class="detail-item">出品者</th>
           <td class="detail-value"><%= @item.user.nickname %></td>
+            <% if current_user != @item.user_id %>
+              <% if @item.user.followed_by?(current_user) %>
+                <%= link_to "フォローする", user_relationships_path(@item.user_id),class: "btn", data: { turbo_method: :delete } %>
+              <% else %>
+                <%= link_to "フォローをやめる", user_relationships_path(@item.user_id),class: "btn", data: { turbo_method: :post } %>
+              <% end %>
+            <% end %>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
