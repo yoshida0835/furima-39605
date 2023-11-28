@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :items do
     resources :orders, only: [:index, :create]
-    resource  :likes,  only: [:create, :destroy]
+    resource :likes,  only: [:create, :destroy]
     resources :users do
       resource :relationships, only: [:create, :destroy]
     end
