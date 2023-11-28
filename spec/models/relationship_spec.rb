@@ -4,7 +4,10 @@ RSpec.describe Relationship, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
   before do
-    @relationship = FactoryBot.build(:relationship)
+    @user1 = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
+    @relationship = Relationship.new(follower_id: @user1.id, following_id: @user2.id)
+
   end
 
   describe 'フォローする' do
@@ -15,18 +18,15 @@ RSpec.describe Relationship, type: :model do
     end
 
     context "フォローできない場合" do
-      it "follower_idがnilの場合は保存できない" do
+      it "follower_idがなければフォローできない" do
         @relationship.follower_id = nil
         @relationship.valid?
-      #  expect(@relationship.errors[:follower_id]).to include("を入力してください")
       end
 
-      it "following_idがnilの場合はフォローできない" do
+      it "following_idがなければフォローできない" do
         @relationship.following_id = nil
         @relationship.valid?
-      #  expect(@relationship.errors[:following_id]).to include("を入力してください")
       end
     end
   end
 end
-
